@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>720500513477-j1ssdm584tjgoqblhr0k1da3mk7g81kb.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.720500513477-j1ssdm584tjgoqblhr0k1da3mk7g81kb</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBX9zAIjY7OOaLM0szKiI_voo4sqiebOjk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>720500513477</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.GroupR.PIDController</string>
+	<key>PROJECT_ID</key>
+	<string>segp-a1804</string>
+	<key>STORAGE_BUCKET</key>
+	<string>segp-a1804.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:720500513477:ios:a9043bb5cd6709c26e6eac</string>
+	<key>DATABASE_URL</key>
+	<string>https://segp-a1804-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</dict>
+</plist>
