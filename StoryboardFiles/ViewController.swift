@@ -6,6 +6,8 @@
 import UIKit
 import Firebase
 import SwiftUI
+import QuartzCore
+
 
 var ref:DatabaseReference!
 var ub = Double() //Stores the upperBound value
@@ -24,10 +26,23 @@ class ViewController: UIViewController {
         let hostingController = UIHostingController(rootView: SwiftUIView())
         present(hostingController, animated: true)
     }
+
     
     //Checks notification permissions
     override func viewDidLoad() {
         super.viewDidLoad()
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = [
+            UIColor(red: 0.1, green: 0.4, blue: 1.0, alpha: 1).cgColor,
+            UIColor.systemMint.cgColor
+        ]
+        gradientLayer.locations = [0.0,1.0]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        view.layer.insertSublayer(gradientLayer, at: 0)
+
+
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) {
             (granted, error) in
@@ -36,7 +51,7 @@ class ViewController: UIViewController {
         //Database initialization
         var databaseHandle:DatabaseHandle
         ref = Database.database(url:"https://segp-a1804-default-rtdb.asia-southeast1.firebasedatabase.app/").reference()
-        databaseHandle = (ref?.child("Thermocouple/temperature").observe(.childChanged, with: { snapshot in
+        databaseHandle = (ref?.child("Thermocouple/temperature").observe(.childAdded, with: { snapshot in
             
             if let doubleValue = snapshot.value as? Double {
                 temp = doubleValue
@@ -72,7 +87,7 @@ class ViewController: UIViewController {
                 
                 //if temp is in range
                 else if temp <= ub && temp >= lb {
-                    self.currentTempLabel.textColor = UIColor.green
+                    self.currentTempLabel.textColor = UIColor(red: 0.92, green: 0.90, blue: 0.85, alpha: 1.00)
                 }
                 
                 //if temp is below lower bound

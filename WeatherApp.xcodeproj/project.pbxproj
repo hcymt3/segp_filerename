@@ -17,6 +17,7 @@
 		44D175E129B38F3E00B46B2A /* WarningScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D175E029B38F3E00B46B2A /* WarningScreen.storyboard */; };
 		44D175E329B390DA00B46B2A /* WarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D175E229B390DA00B46B2A /* WarningViewController.swift */; };
 		44F165B5297E83F800EB49D3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F165B4297E83F800EB49D3 /* SettingsView.swift */; };
+		4F42F69129C8BBEC004FF9A8 /* Libraryam.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F42F69029C8BBEC004FF9A8 /* Libraryam.otf */; };
 		4F68F9B429B4D17800F5DE57 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F68F9B329B4D17800F5DE57 /* SceneDelegate.swift */; };
 		4F7E0C4129B6E56600919672 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F7E0C4029B6E56600919672 /* GoogleService-Info.plist */; };
 		4FA3CF7F29AE2DC000C89123 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 4FA3CF7E29AE2DC000C89123 /* FirebaseAnalytics */; };
@@ -35,6 +36,7 @@
 		44D175E029B38F3E00B46B2A /* WarningScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WarningScreen.storyboard; sourceTree = "<group>"; };
 		44D175E229B390DA00B46B2A /* WarningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningViewController.swift; sourceTree = "<group>"; };
 		44F165B4297E83F800EB49D3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4F42F69029C8BBEC004FF9A8 /* Libraryam.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Libraryam.otf; sourceTree = "<group>"; };
 		4F68F9B229B4C87200F5DE57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4F68F9B329B4D17800F5DE57 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4F7E0C4029B6E56600919672 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				44D175E029B38F3E00B46B2A /* WarningScreen.storyboard */,
 				4F68F9B329B4D17800F5DE57 /* SceneDelegate.swift */,
 				44D175E229B390DA00B46B2A /* WarningViewController.swift */,
+				4F42F69029C8BBEC004FF9A8 /* Libraryam.otf */,
 			);
 			path = StoryboardFiles;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				4F7E0C4129B6E56600919672 /* GoogleService-Info.plist in Resources */,
 				44AC4232292359FB00AEC994 /* Preview Assets.xcassets in Resources */,
 				44AC422F292359FB00AEC994 /* Assets.xcassets in Resources */,
+				4F42F69129C8BBEC004FF9A8 /* Libraryam.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
