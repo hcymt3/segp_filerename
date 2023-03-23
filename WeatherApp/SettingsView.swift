@@ -105,9 +105,9 @@ struct SwiftUIView: View {
                                         
                                         Button("Done") {
 
-                                            if ( Double(UB) ?? upperBound > lowerBound)
+                                            if ( Double(UB) ?? data.upperBound > data.lowerBound)
                                             {
-                                                upperBound = Double(UB) ?? upperBound
+                                                data.upperBound = Double(UB) ?? data.upperBound
                                             }
                                             
                                             focusedField = nil
