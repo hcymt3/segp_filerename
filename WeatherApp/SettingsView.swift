@@ -23,7 +23,7 @@ struct SwiftUIView: View {
 
     
     @ObservedObject var data = Temperature()
-    //data.upperBound
+    //data.data.upperBound
     //data.lowerBound
     
     var body: some View{
@@ -104,32 +104,32 @@ struct SwiftUIView: View {
                                     ToolbarItem(placement: .keyboard) {
                                         
                                         Button("Done") {
-
-                                            if ( Double(UB) ?? data.upperBound > data.lowerBound)
+                                            if ( Double(LB) ?? data.lowerBound < data.upperBound)
                                             {
-                                                data.upperBound = Double(UB) ?? data.upperBound
+                                                data.lowerBound = Double(LB) ?? data.lowerBound
                                             }
                                             
                                             focusedField = nil
-                                            editUB = false
-                                        }                                    }
+                                            editLB = false
+                                        }
+                                    }
                                 }
                                 
 
                         }
-                        .padding(EdgeInsets(top: 70, leading: 0, bottom: 70, trailing: 0))
+                        .padding(EdgeInsets(top: 40, leading: 0, bottom: 5, trailing: 0))
                         
-//                        Button("Done") {
-//
-//                            if ( Double(UB) ?? data.upperBound > data.lowerBound)
-//                            {
-//                                data.upperBound = Double(UB) ?? data.upperBound
-//                            }
-//
-//                            editUB = false
-//
-//                        }
-//                        .padding(30)
+                        Button("Done") {
+
+                            if ( Double(UB) ?? data.upperBound > data.lowerBound)
+                            {
+                                data.upperBound = Double(UB) ?? data.upperBound
+                            }
+
+                            editUB = false
+
+                        }
+                        .padding(40)
                                     
                 }
                 .background(Color.blue.opacity(0.5))
@@ -174,7 +174,7 @@ struct SwiftUIView: View {
                 }
                 
                 
-                
+            
                 //edit screen
                 if editLB {
                     
@@ -201,20 +201,19 @@ struct SwiftUIView: View {
                                     }
                                 }
                                 }
-                                .padding(EdgeInsets(top: 70, leading: 0, bottom: 70, trailing: 0))
+                                .padding(EdgeInsets(top: 40, leading: 0, bottom: 5, trailing: 0))
                         
-                        //REMOVED DONE BUTTON
-//                        Button("Done") {
-//
-//                            if ( Double(LB) ?? data.lowerBound < data.upperBound)
-//                            {
-//                                data.lowerBound = Double(LB) ?? data.lowerBound
-//                            }
-//
-//                            editLB = false
-//
-//                        }
-//                        .padding(30)
+                        Button("Done") {
+
+                            if ( Double(LB) ?? data.lowerBound < data.upperBound)
+                            {
+                                data.lowerBound = Double(LB) ?? data.lowerBound
+                            }
+
+                            editLB = false
+
+                        }
+                        .padding(40)
                             
                 }
                 .background(Color.blue.opacity(0.5))
@@ -225,6 +224,11 @@ struct SwiftUIView: View {
                 
             }
         }
+        
+        .onTapGesture {
+            self.focusedField = nil
+        }
+
     }
 }
 
