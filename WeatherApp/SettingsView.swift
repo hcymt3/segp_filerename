@@ -9,6 +9,10 @@ import SwiftUI
 
 struct SwiftUIView: View {
     
+    enum focusedField{
+        case dec
+    }
+    
     @State var editUB = false
     @State var editLB = false
     
@@ -16,6 +20,9 @@ struct SwiftUIView: View {
     @State private var LB = ""
     
     @ObservedObject var data = Temperature()
+    
+    @FocusState private var focusedField: focusedField?
+
     
     var body: some View{
         
@@ -89,7 +96,21 @@ struct SwiftUIView: View {
                             TextField(" Enter upper bound", text: $UB)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.horizontal, 60)
+                                .focused($focusedField, equals: .dec)
                                 .keyboardType(.decimalPad)
+                                .toolbar {
+                                    ToolbarItem(placement: .keyboard) {
+                                        
+                                        Button("Done") {
+                                            if ( Double(LB) ?? lowerBound < upperBound)
+                                            {
+                                                lowerBound = Double(LB) ?? lowerBound
+                                            }
+                                            
+                                            editLB = false
+                                        }
+                                    }
+                                }
 
                         }
                         .padding(EdgeInsets(top: 70, leading: 0, bottom: 70, trailing: 0))
@@ -160,6 +181,7 @@ struct SwiftUIView: View {
                             TextField(" Enter lower bound", text: $LB)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.horizontal, 60)
+                                .focused($focusedField, equals: .dec)
                                 .keyboardType(.decimalPad)
                                 .toolbar {
                                     ToolbarItem(placement: .keyboard) {
