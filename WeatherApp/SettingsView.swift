@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SwiftUIView: View {
     
-    enum focusedField{
+    enum FF{
         case dec
     }
     
@@ -19,10 +19,12 @@ struct SwiftUIView: View {
     @State private var UB = ""
     @State private var LB = ""
     
-    @ObservedObject var data = Temperature()
-    
-    @FocusState private var focusedField: focusedField?
+    @FocusState private var focusedField: FF?
 
+    
+    @ObservedObject var data = Temperature()
+    //data.upperBound
+    //data.lowerBound
     
     var body: some View{
         
@@ -82,7 +84,7 @@ struct SwiftUIView: View {
                     }
                     .background(Gradient(colors: [Color.cyan, Color.blue]))
                     .cornerRadius(10)
-                    .padding(50)
+                    .padding()
                     
                 }
                 
@@ -102,15 +104,17 @@ struct SwiftUIView: View {
                                     ToolbarItem(placement: .keyboard) {
                                         
                                         Button("Done") {
-                                            if ( Double(LB) ?? lowerBound < upperBound)
+
+                                            if ( Double(UB) ?? upperBound > lowerBound)
                                             {
-                                                lowerBound = Double(LB) ?? lowerBound
+                                                upperBound = Double(UB) ?? upperBound
                                             }
                                             
-                                            editLB = false
-                                        }
-                                    }
+                                            focusedField = nil
+                                            editUB = false
+                                        }                                    }
                                 }
+                                
 
                         }
                         .padding(EdgeInsets(top: 70, leading: 0, bottom: 70, trailing: 0))
@@ -130,7 +134,7 @@ struct SwiftUIView: View {
                 }
                 .background(Color.blue.opacity(0.5))
                 .cornerRadius(10)
-                .padding(50)
+                .padding()
     
                 }
                 
@@ -165,7 +169,7 @@ struct SwiftUIView: View {
                     }
                     .background(Gradient(colors: [Color.cyan, Color.blue]))
                     .cornerRadius(10)
-                    .padding(50)
+                    .padding()
                     
                 }
                 
@@ -185,13 +189,13 @@ struct SwiftUIView: View {
                                 .keyboardType(.decimalPad)
                                 .toolbar {
                                     ToolbarItem(placement: .keyboard) {
-                                        Spacer()
                                         Button("Done") {
                                             if ( Double(LB) ?? data.lowerBound < data.upperBound)
                                             {
                                                 data.lowerBound = Double(LB) ?? data.lowerBound
                                             }
                                             
+                                            focusedField = nil
                                             editLB = false
                                         }
                                     }
@@ -215,7 +219,7 @@ struct SwiftUIView: View {
                 }
                 .background(Color.blue.opacity(0.5))
                 .cornerRadius(10)
-                .padding(50)
+                .padding()
     
                 }
                 
