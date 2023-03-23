@@ -51,11 +51,11 @@ class ViewController: UIViewController {
         //Database initialization
         var databaseHandle:DatabaseHandle
         ref = Database.database(url:"https://segp-a1804-default-rtdb.asia-southeast1.firebasedatabase.app/").reference()
-        databaseHandle = (ref?.child("Thermocouple/temperature").observe(.childAdded, with: { snapshot in
+        databaseHandle = (ref?.child("Dummy").observe(.childAdded, with: { snapshot in
             
             if let doubleValue = snapshot.value as? Double {
                 temp = doubleValue
-                self.currentTempLabel.text = ("\(temp)")
+                self.currentTempLabel.text = ("\(temp)°C")
                 
                 if let lowerTemp = UserDefaults.standard.object(forKey: "lowerTemp") as? Double {
                     lb = lowerTemp
@@ -66,7 +66,12 @@ class ViewController: UIViewController {
                 
                 //if temp is greater than the upper bound
                 if temp > ub {
-                    self.currentTempLabel.textColor = UIColor.red //Change label color to red
+                    self.currentTempLabel.textColor = UIColor(red: 0.92, green: 0.90, blue: 0.85, alpha: 1.00)
+
+                    gradientLayer.colors = [
+                        UIColor(red: 1, green: 0.0, blue: 0.0, alpha: 1).cgColor,
+                        UIColor(red: 1.00, green: 0.41, blue: 0.38, alpha: 1.00).cgColor
+                    ]
                     
                     let content = UNMutableNotificationContent()
                     content.title = "Temperature Alert"
@@ -88,6 +93,9 @@ class ViewController: UIViewController {
                 //if temp is in range
                 else if temp <= ub && temp >= lb {
                     self.currentTempLabel.textColor = UIColor(red: 0.92, green: 0.90, blue: 0.85, alpha: 1.00)
+                    gradientLayer.colors = [
+                        UIColor(red: 0.1, green: 0.4, blue: 1.0, alpha: 1).cgColor,
+                        UIColor.systemMint.cgColor]
                 }
                 
                 //if temp is below lower bound
