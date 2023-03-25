@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
         gradientLayer.colors = [
-            UIColor(red: 0.1, green: 0.4, blue: 1.0, alpha: 1).cgColor,UIColor.systemMint.cgColor]
+            UIColor(red: 0.28, green: 0.52, blue: 0.28, alpha: 1.00).cgColor,UIColor(red: 0.47, green: 0.87, blue: 0.47, alpha: 1.00).cgColor]
         gradientLayer.locations = [0.0,1.0]
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
@@ -65,7 +65,6 @@ class ViewController: UIViewController {
                 //if temp is greater than the upper bound
                 if temp > ub {
                     self.currentTempLabel.textColor = UIColor(red: 0.92, green: 0.90, blue: 0.85, alpha: 1.00)
-
                     gradientLayer.colors = [
                         UIColor(red: 1, green: 0.0, blue: 0.0, alpha: 1).cgColor,
                         UIColor(red: 1.00, green: 0.41, blue: 0.38, alpha: 1.00).cgColor
@@ -91,17 +90,15 @@ class ViewController: UIViewController {
                 //if temp is in range
                 else if temp <= ub && temp >= lb {
                     self.currentTempLabel.textColor = UIColor(red: 0.92, green: 0.90, blue: 0.85, alpha: 1.00)
-                    gradientLayer.colors = [
-                        UIColor(red: 0.1, green: 0.4, blue: 1.0, alpha: 1).cgColor,
-                        UIColor.systemMint.cgColor]
+                    gradientLayer.colors = [UIColor(red: 0.28, green: 0.52, blue: 0.28, alpha: 1.00).cgColor,UIColor(red: 0.47, green: 0.87,blue: 0.47, alpha: 1.00).cgColor]
                 }
                 
                 //if temp is below lower bound
                 else {
-                    self.currentTempLabel.textColor = UIColor.blue
-                    gradientLayer.colors = [
-                        UIColor(red: 0.68, green: 0.78, blue: 0.81, alpha: 1.00).cgColor,
-                        UIColor(red: 0.62, green: 0.79, blue: 0.92, alpha: 1.00).cgColor]
+                    self.currentTempLabel.textColor = UIColor(red: 0.92, green: 0.90, blue: 0.85, alpha: 1.00)
+                    gradientLayer.colors = [UIColor(red: 0.31, green: 0.47, blue: 0.67, alpha: 1.00).cgColor,
+                                            UIColor(red: 0.47, green: 0.68, blue: 0.83, alpha: 1.00).cgColor
+                        ]
                     
                     let content = UNMutableNotificationContent()
                     content.title = "Temperature Alert"
