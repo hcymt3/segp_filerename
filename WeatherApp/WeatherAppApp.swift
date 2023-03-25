@@ -32,7 +32,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
   
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
            // Show the notification alert and badge
-           completionHandler([.alert, .badge])
+           completionHandler([.alert, .sound])
        }
 
        // Handle notification events while the app is in the background

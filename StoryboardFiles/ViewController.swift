@@ -16,7 +16,6 @@ var temp = Double() //Variable to store the current temp
 
 class ViewController: UIViewController {
     
-    
     @IBOutlet weak var currentTempLabel: UILabel!
     @ObservedObject var data = Temperature()
     
@@ -34,9 +33,7 @@ class ViewController: UIViewController {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
         gradientLayer.colors = [
-            UIColor(red: 0.1, green: 0.4, blue: 1.0, alpha: 1).cgColor,
-            UIColor.systemMint.cgColor
-        ]
+            UIColor(red: 0.1, green: 0.4, blue: 1.0, alpha: 1).cgColor,UIColor.systemMint.cgColor]
         gradientLayer.locations = [0.0,1.0]
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
@@ -51,6 +48,7 @@ class ViewController: UIViewController {
         //Database initialization
         var databaseHandle:DatabaseHandle
         ref = Database.database(url:"https://segp-a1804-default-rtdb.asia-southeast1.firebasedatabase.app/").reference()
+        
         databaseHandle = (ref?.child("Dummy").observe(.childAdded, with: { snapshot in
             
             if let doubleValue = snapshot.value as? Double {
@@ -75,7 +73,7 @@ class ViewController: UIViewController {
                     
                     let content = UNMutableNotificationContent()
                     content.title = "Temperature Alert"
-                    content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "customnotification.mp3"))
+                    content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "customnotification.wav"))
                     content.body = "The temperature has exceeded the upper bound."
                     
                     let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false) // Set the notification trigger
@@ -101,10 +99,13 @@ class ViewController: UIViewController {
                 //if temp is below lower bound
                 else {
                     self.currentTempLabel.textColor = UIColor.blue
+                    gradientLayer.colors = [
+                        UIColor(red: 0.68, green: 0.78, blue: 0.81, alpha: 1.00).cgColor,
+                        UIColor(red: 0.62, green: 0.79, blue: 0.92, alpha: 1.00).cgColor]
                     
                     let content = UNMutableNotificationContent()
                     content.title = "Temperature Alert"
-                    content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "customnotification.mp3"))
+                    content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "customnotification.wav"))
                     content.body = "The temperature has exceeded the lower bound."
                     // Set the notification trigger
                     let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
@@ -125,6 +126,23 @@ class ViewController: UIViewController {
                 self.currentTempLabel.text = ("Error in reading temperature from the database")
             }
         }))!
+        /*databaseHandle = ref.child("Heater").observe(.childChanged, with: { snapshot in
+                if let heaterValue = snapshot.value as? Bool {
+                    print("Heater value: \(heaterValue)")
+                    if(String(heaterValue) == "false"){
+                        self.heaterOffLabel.text = ("HEATER:Off")
+                        print("heater is off")
+                    }
+                    else{
+                        self.heaterOffLabel.text = ("heater ON")
+                        print("heater is on")
+                    }
+                    
+                    // Do something with the heaterValue here
+                } else {
+                    print("Failed to read boolean value from database")
+                }
+            })*/
     }
 }
 

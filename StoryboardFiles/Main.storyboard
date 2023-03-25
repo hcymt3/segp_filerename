@@ -79,7 +79,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to Use " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5p-Pe-TMf">
-                                <rect key="frame" x="108.66666666666667" y="60" width="175.66666666666663" height="40.666666666666657"/>
+                                <rect key="frame" x="108.66666666666667" y="64" width="175.66666666666663" height="40.666666666666657"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -88,8 +88,8 @@
                         <viewLayoutGuide key="safeArea" id="MJS-We-nms"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="f5p-Pe-TMf" firstAttribute="centerX" secondItem="GYT-P7-WX2" secondAttribute="centerX" id="HFZ-nd-GT7"/>
-                            <constraint firstItem="f5p-Pe-TMf" firstAttribute="top" secondItem="MJS-We-nms" secondAttribute="top" constant="1" id="acW-zo-GIZ"/>
+                            <constraint firstItem="f5p-Pe-TMf" firstAttribute="top" secondItem="MJS-We-nms" secondAttribute="top" constant="5" id="GRu-13-YiI"/>
+                            <constraint firstItem="f5p-Pe-TMf" firstAttribute="centerX" secondItem="GYT-P7-WX2" secondAttribute="centerX" id="H54-c6-pfW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cET-Ph-7Kj"/>
