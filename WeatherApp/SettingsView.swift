@@ -23,8 +23,8 @@ struct SwiftUIView: View {
 
     
     @ObservedObject var data = Temperature()
-    //data.data.upperBound
-    //data.lowerBound
+    //data.data.data.data.upperBound
+    //data.data.lowerBound
     
     var body: some View{
         
@@ -34,8 +34,12 @@ struct SwiftUIView: View {
                         
             VStack{
                 
+                Spacer()
+
+                
                 //heading
                 HStack{
+                    
                     
                     Text("Settings")
                         .font(.system(size: 40))
@@ -52,7 +56,20 @@ struct SwiftUIView: View {
                 
                 Text("Tap to adjust upper and lower limits")
                     .foregroundColor(.black)
+                
+                if(showWarning){
+                    
+                    Text("Upper Bound > Lower Bound ")
+                        .foregroundColor(.red)
+                }
+                else{
+                    
+                        Text(".....")
+                        .foregroundColor(.white)
+                }
+                
 
+               // Spacer()
                         
                 //UPPER BOUND SETTINGS
                 
@@ -95,8 +112,16 @@ struct SwiftUIView: View {
                         
                         HStack{
                             
-                            TextField(" Enter upper bound", text: $UB)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                            TextField("Enter Upper Bound", text: $UB)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                                .background(
+                                                VStack {
+                                                    Spacer()
+                                                    Color(UIColor.white)
+                                                        .frame(height: 2)
+                                                }
+                                            )
                                 .padding(.horizontal, 60)
                                 .focused($focusedField, equals: .dec)
                                 .keyboardType(.decimalPad)
@@ -117,19 +142,26 @@ struct SwiftUIView: View {
                                 
 
                         }
-                        .padding(EdgeInsets(top: 40, leading: 0, bottom: 5, trailing: 0))
+                        .padding(EdgeInsets(top: 20, leading: 0, bottom: 5, trailing: 0))
                         
                         Button("Done") {
 
                             if ( Double(UB) ?? data.upperBound > data.lowerBound)
                             {
                                 data.upperBound = Double(UB) ?? data.upperBound
+                                editUB = false
+                                showWarning = false
+
+
+                            }
+                            else
+                            {
+                                showWarning = true
                             }
 
-                            editUB = false
 
                         }
-                        .padding(40)
+                        .padding(37)
                                     
                 }
                 .background(Color.blue.opacity(0.5))
@@ -138,7 +170,9 @@ struct SwiftUIView: View {
     
                 }
                 
-
+             
+        
+          
                 //LOWER BOUND SETTINGS
                 
                 if !editLB{ //if no edits are being made
@@ -182,8 +216,16 @@ struct SwiftUIView: View {
                         
                         HStack{
                             
-                            TextField(" Enter lower bound", text: $LB)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                            TextField(" Enter Lower Bound", text: $LB)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                                .background(
+                                                VStack {
+                                                    Spacer()
+                                                    Color(UIColor.white)
+                                                        .frame(height: 2)
+                                                }
+                                            )
                                 .padding(.horizontal, 60)
                                 .focused($focusedField, equals: .dec)
                                 .keyboardType(.decimalPad)
@@ -201,19 +243,28 @@ struct SwiftUIView: View {
                                     }
                                 }
                                 }
-                                .padding(EdgeInsets(top: 40, leading: 0, bottom: 5, trailing: 0))
+                                .padding(EdgeInsets(top: 20, leading: 0, bottom: 5, trailing: 0))
                         
                         Button("Done") {
+                            
+                            
 
                             if ( Double(LB) ?? data.lowerBound < data.upperBound)
                             {
                                 data.lowerBound = Double(LB) ?? data.lowerBound
+                                editLB = false
+                                showWarning = false
+
+                            }
+                            else
+                            {
+                                showWarning = true
+                                
                             }
 
-                            editLB = false
 
                         }
-                        .padding(40)
+                        .padding(37)
                             
                 }
                 .background(Color.blue.opacity(0.5))
@@ -222,7 +273,13 @@ struct SwiftUIView: View {
     
                 }
                 
+                Spacer()
+                
             }
+            
+          
+            
+            
         }
         
         .onTapGesture {
@@ -237,3 +294,4 @@ struct SwiftUIView_Previews: PreviewProvider {
         SwiftUIView()
     }
 }
+
