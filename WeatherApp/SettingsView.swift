@@ -15,6 +15,7 @@ struct SwiftUIView: View {
     
     @State var editUB = false
     @State var editLB = false
+    @State var showWarning = false
     
     @State private var UB = ""
     @State private var LB = ""
