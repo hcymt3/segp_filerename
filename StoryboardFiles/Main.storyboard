@@ -60,7 +60,7 @@
                     </view>
                     <connections>
                         <outlet property="currentTempLabel" destination="srL-bY-w2K" id="n3q-Rq-Dvc"/>
-                        <outlet property="heaterOffLabel" destination="rxM-VH-VFu" id="yJh-6j-keM"/>
+                        <outlet property="heaterLabel" destination="rxM-VH-VFu" id="yJh-6j-keM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
