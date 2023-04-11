@@ -8,7 +8,6 @@ import Firebase
 import SwiftUI
 import QuartzCore
 
-
 var ref:DatabaseReference!
 var ub = Double() //Stores the upperBound value
 var lb = Double() //Stores the lowerBound alue
@@ -16,7 +15,8 @@ var temp = Double() //Variable to store the current temp
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var currentTempLabel: UILabel!
+    @IBOutlet weak var heaterOffLabel: UILabel! //Label that displays the current status of the heater
+    @IBOutlet weak var currentTempLabel: UILabel! //Label that displays the value of the current temperature
     @ObservedObject var data = Temperature()
     
     //Settings button that takes you to the settings screen
@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         var databaseHandle:DatabaseHandle
         ref = Database.database(url:"https://segp-a1804-default-rtdb.asia-southeast1.firebasedatabase.app/").reference()
         
-        databaseHandle = (ref?.child("Dummy").observe(.childAdded, with: { snapshot in
+        databaseHandle = (ref?.child("Thermocouple/thermometer").observe(.childChanged, with: { snapshot in
             
             if let doubleValue = snapshot.value as? Double {
                 temp = doubleValue
@@ -123,23 +123,20 @@ class ViewController: UIViewController {
                 self.currentTempLabel.text = ("Error in reading temperature from the database")
             }
         }))!
-        /*databaseHandle = ref.child("Heater").observe(.childChanged, with: { snapshot in
+        
+        //Code to display the current heater status, i.e; whether it is off or on
+        databaseHandle = ref.child("Heater").observe(.value, with: { snapshot in
                 if let heaterValue = snapshot.value as? Bool {
-                    print("Heater value: \(heaterValue)")
                     if(String(heaterValue) == "false"){
-                        self.heaterOffLabel.text = ("HEATER:Off")
-                        print("heater is off")
+                        self.heaterOffLabel.text = ("Heater is Off")
                     }
                     else{
-                        self.heaterOffLabel.text = ("heater ON")
-                        print("heater is on")
+                        self.heaterOffLabel.text = ("Heater is On")
                     }
-                    
-                    // Do something with the heaterValue here
                 } else {
-                    print("Failed to read boolean value from database")
+                    print("Failed to read heater status from database")
                 }
-            })*/
+            })
     }
 }
 
