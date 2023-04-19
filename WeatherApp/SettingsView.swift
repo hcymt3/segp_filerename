@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-//this file displays the settings menu for the app. 
-// one section of the code manipulates the upper bound, and the other, the lower bound
+//this file displays the settings menu for the app. Written in SwiftUI
+//one section of the code manipulates the upper bound, and the other, the lower bound
 
 
 struct SwiftUIView: View {
@@ -21,6 +21,8 @@ struct SwiftUIView: View {
     
     @State var editUB = false
     @State var editLB = false
+    
+    //showWarning promts user to input the correct conditions (upperbound must be > lowerbound)
     @State var showWarning = false
     
     @State private var UB = ""
@@ -53,12 +55,14 @@ struct SwiftUIView: View {
                         .foregroundColor(.black)
                 }
                 
+                //instructions
                 Text("Tap to adjust upper and lower limits")
                     .foregroundColor(.black)
                 
+                //show promt for user to input an appropriate upperbound/lowerbound
                 if(showWarning){
                     
-                    Text("Upper Bound > Lower Bound ")
+                    Text("Upper Bound > Lower Bound ") 
                         .foregroundColor(.red)
                 }
                 else{
@@ -68,7 +72,6 @@ struct SwiftUIView: View {
                                         
                 //UPPER BOUND SETTINGS
                 //if no edits are being made                      
-                //allow user to edit temperature value
                 
                 if !editUB{ 
                     
@@ -107,6 +110,7 @@ struct SwiftUIView: View {
                         
                         HStack{
                             
+                            //Text area and keyboard is digits only
                             TextField("Enter Upper Bound", text: $UB)
                                 .multilineTextAlignment(.center)
                                 .padding()
@@ -120,26 +124,13 @@ struct SwiftUIView: View {
                                 .padding(.horizontal, 60)
                                 .focused($focusedField, equals: .dec)
                                 .keyboardType(.decimalPad)
-                                .toolbar {
-                                    ToolbarItem(placement: .keyboard) {
-                                        
-                                        Button("Done") {
-                                            if ( Double(LB) ?? data.lowerBound < data.upperBound)
-                                            {
-                                                data.lowerBound = Double(LB) ?? data.lowerBound
-                                            }
-                                            
-                                            focusedField = nil
-                                            editLB = false
-                                        }
-                                    }
-                                }
-                                
 
                         }
                         .padding(EdgeInsets(top: 20, leading: 0, bottom: 5, trailing: 0))
                         
                         Button("Done") {
+                            
+                            //if settings inputted by the user does not satisfy the requirements
 
                             if ( Double(UB) ?? data.upperBound > data.lowerBound)
                             {
@@ -223,35 +214,25 @@ struct SwiftUIView: View {
                                 .padding(.horizontal, 60)
                                 .focused($focusedField, equals: .dec)
                                 .keyboardType(.decimalPad)
-                                .toolbar {
-                                    ToolbarItem(placement: .keyboard) {
-                                        Button("Done") {
-                                            if ( Double(LB) ?? data.lowerBound < data.upperBound)
-                                            {
-                                                data.lowerBound = Double(LB) ?? data.lowerBound
-                                            }
-                                            
-                                            focusedField = nil
-                                            editLB = false
-                                        }
-                                    }
-                                }
-                                }
-                                .padding(EdgeInsets(top: 20, leading: 0, bottom: 5, trailing: 0))
+               
+                            }
+                            .padding(EdgeInsets(top: 20, leading: 0, bottom: 5, trailing: 0))
                         
                         Button("Done") {
                             
-                            
+                            //if settings inputted by the user satisfies requirements, save the settings
 
                             if ( Double(LB) ?? data.lowerBound < data.upperBound)
                             {
                                 data.lowerBound = Double(LB) ?? data.lowerBound
                                 editLB = false
                                 showWarning = false
+                                
 
                             }
                             else
                             {
+                                //else show the prompt 
                                 showWarning = true
                                 
                             }
@@ -287,4 +268,3 @@ struct SwiftUIView_Previews: PreviewProvider {
         SwiftUIView() 
     }
 }
-
