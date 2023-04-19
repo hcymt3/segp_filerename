@@ -7,11 +7,15 @@
 
 import SwiftUI
 
+//this file displays the settings menu for the app
+
 struct SwiftUIView: View {
     
     enum FF{
         case dec
     }
+    
+    //variables to trigger the editing functions
     
     @State var editUB = false
     @State var editLB = false
@@ -22,11 +26,9 @@ struct SwiftUIView: View {
     
     @FocusState private var focusedField: FF?
 
-    
+    //get the current temperature values
     @ObservedObject var data = Temperature()
-    //data.data.data.data.upperBound
-    //data.data.lowerBound
-    
+
     var body: some View{
         
         ZStack {
@@ -34,26 +36,20 @@ struct SwiftUIView: View {
             Color.white.edgesIgnoringSafeArea(.all)
                         
             VStack{
-                
                 Spacer()
 
-                
                 //heading
                 HStack{
-                    
-                    
+                         
                     Text("Settings")
                         .font(.system(size: 40))
                         .foregroundColor(.black)
-                        
-                                                        
+                                                                
                     Image(systemName: "gearshape.fill")
                         .resizable()
                         .frame(width: 30, height: 30)
                         .foregroundColor(.black)
-
                 }
-                
                 
                 Text("Tap to adjust upper and lower limits")
                     .foregroundColor(.black)
@@ -64,20 +60,17 @@ struct SwiftUIView: View {
                         .foregroundColor(.red)
                 }
                 else{
-                    
                         Text(".....")
                         .foregroundColor(.white)
                 }
-                
-
-               // Spacer()
-                        
+                                        
                 //UPPER BOUND SETTINGS
+                //if no edits are being made                      
+                //allow user to edit temperature value
                 
-                if !editUB{ //if no edits are being made
+                if !editUB{ 
                     
                     Button(action: {
-                        //allow user to edit temperature value
                         editUB = true
                         
                     }) {
@@ -95,7 +88,6 @@ struct SwiftUIView: View {
                                 .font(.largeTitle)
                                 .foregroundColor(Color.black)
                         
-
                         }
                         .padding(EdgeInsets(top: 50, leading: 30, bottom: 50, trailing: 30))
                         
@@ -106,7 +98,7 @@ struct SwiftUIView: View {
                     
                 }
                 
-                //edit screen
+                //edit screen, to be displayed when user taps on upperbound
                 if editUB {
                     
                     VStack{
@@ -172,14 +164,13 @@ struct SwiftUIView: View {
                 }
                 
              
-        
-          
                 //LOWER BOUND SETTINGS
+                //if no edits are being made
                 
-                if !editLB{ //if no edits are being made
+                if !editLB{ 
                     
                     Button(action: {
-                        //allow user to edit temperature value
+                       
                         editLB = true
                         
                     }) {
@@ -208,9 +199,9 @@ struct SwiftUIView: View {
                     
                 }
                 
+                    
+                //edit screen, to be displayed when user taps on lowerbound
                 
-            
-                //edit screen
                 if editLB {
                     
                     VStack{
@@ -277,11 +268,9 @@ struct SwiftUIView: View {
                 Spacer()
                 
             }
-            
-          
-            
-            
         }
+        
+        //cause settings display to enable editing
         
         .onTapGesture {
             self.focusedField = nil
@@ -290,9 +279,10 @@ struct SwiftUIView: View {
     }
 }
 
+//display view
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIView()
+        SwiftUIView() 
     }
 }
 
