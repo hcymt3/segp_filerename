@@ -9,6 +9,8 @@ import Combine
 import SwiftUI
 import UIKit
 
+// the class Temperature is an ObservableObejct that displays the main screen for the app in SwiftUI
+// an observable object would constantly refresh and retrieve values, if they are updated
 class Temperature: ObservableObject {
     
     let userDefaults = UserDefaults.standard
@@ -20,6 +22,7 @@ class Temperature: ObservableObject {
     
     @Published var t = temp
     
+    // gets upperbound and lowerbound values
     @Published var upperBound : Double {
         didSet {
             UserDefaults.standard.set(upperBound, forKey: "upperTemp")
@@ -33,12 +36,16 @@ class Temperature: ObservableObject {
         }
     }
     
+    //contains the ideal temperature that we want set up
+
     init() {
         self.lowerBound = UserDefaults.standard.double(forKey: "lowerTemp")
         self.upperBound = UserDefaults.standard.double(forKey: "upperTemp")
     }
-    //the ideal temperature that we want set up
 }
+
+
+//display storyboard view, which is situated in ContentView
 
 struct ContentView: View {
     @StateObject var data = Temperature()
@@ -47,117 +54,16 @@ struct ContentView: View {
     }
 }
 
-struct MainPage: View{
-    @StateObject var temp = Temperature()
-    var diff:Double {
-        return temp.t - Double(temp.lowerBound)
-    }
-    
-    var body: some View{
-        
-        ZStack {
-            VStack{
-                Spacer()
-                Text("Current Temperature")
-                    .font(.title)
-                    .foregroundColor(Color.black)
-                Text("\(temp.t) ºC")
-                    .font(.system(size: 100))
-                    .foregroundColor(Color.black)
-                Spacer()
-                    .frame(height: 80)
-                Text("Deviation")
-                    .font(.title)
-                    .foregroundColor(Color.black)
-                Text("\(diff) ºC")
-                    .font(.largeTitle)
-                    .foregroundColor(Color.black)
-                // Text(String(temp.ideal) + "ºC")
-                Spacer()
-            }
-        }
-    }
-}
 
-struct Settings: View{
-    
-    @ObservedObject var temp = Temperature()
-    
-    var body: some View{
-        
-        ZStack {
-            
-            Color.black
-                .edgesIgnoringSafeArea(.all)
-            
-            VStack{
-                
-                Text("Upper Bound")
-                    .font(.title)
-                    .foregroundColor(Color.white)
-                HStack{
-                    Button(action:{
-                        temp.upperBound -= 1
-                    }){
-                        Image(systemName:"arrow.left")
-                    }
-                    
-                    VStack{
-                        
-                        Text(" \(temp.upperBound) ºC")
-                            .font(.largeTitle)
-                            .colorInvert()
-                    }
-                    
-                    Button(action:{
-                        temp.upperBound += 1
-                    }){
-                        Image(systemName:"arrow.right")
-                    }
-                }
-                
-                
-                Spacer()
-                    .frame(height: 80)
-                
-                Text("Lower Bound")
-                    .font(.title)
-                    .colorInvert()
-                
-                
-                HStack{
-                    
-                    Button(action:{temp.lowerBound -= 1}){
-                        Image(systemName:"arrow.left")
-                        
-                    }
-                    
-                    VStack{
-                        
-                        Text(String(temp.lowerBound) + "ºC")
-                            .font(.largeTitle)
-                            .foregroundColor(Color.white)
-                    }
-                    
-                    Button(action:{temp.lowerBound += 1}){
-                        Image(systemName:"arrow.right")
-                        
-                    }
-                    
-                }
-                
-            }
-            
-        }
-    }
-}
-
+//displays the ContentView
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
+//MyWarningViewController contains the design and view controller for sending alerts to the home page
 
 struct MyWarningViewController: UIViewControllerRepresentable {
     
@@ -182,6 +88,8 @@ struct MyWarningViewController: UIViewControllerRepresentable {
     }
 }
 
+// contains the storyboard view to be intergrated in SwfitUI
+
 struct storyboardview: UIViewControllerRepresentable{
     
     func makeUIViewController(context content: Context) -> UIViewController{
@@ -191,7 +99,6 @@ struct storyboardview: UIViewControllerRepresentable{
     }
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context){
-        
         
     }
 }
