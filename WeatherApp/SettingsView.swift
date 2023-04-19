@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-//this file displays the settings menu for the app
+//this file displays the settings menu for the app. 
+// one section of the code manipulates the upper bound, and the other, the lower bound
+
 
 struct SwiftUIView: View {
     
