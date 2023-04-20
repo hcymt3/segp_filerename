@@ -23,6 +23,12 @@ Breadboard
 Male to male jumper wires
 Male to female jumper wires
 
+##Wire Connection
+Connect voltage and ground pins to the respective pins. Use breadboard to extend the number of VCC and GND pins
+MAX6675 Amplifier : SCK needs a SPI clock pin, CS needs SPI data pin, SO needs a digital pin
+I2C LCD : Connect the SDA and SCL pins accordingly to the matching pin on the Arduino
+Relay : Connect IN to an analogue pin
+
 After assembling the components together, load the code provided to the aruino.
 
 ## Changes to be made:
