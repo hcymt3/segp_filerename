@@ -1,7 +1,7 @@
 //  ViewController.swift, is the main view controller of the app
-//  ArduinoPID
+//  Responsible for connecting to the database and reading current temperature & heater status
+//  Responsible for sending notifications when temperature is out of range
 //  Created by Asdaq on 2/20/23.
-//
 
 import UIKit
 import Firebase
@@ -16,11 +16,12 @@ var temp = Double() //Variable to store the current temp
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var heaterLabel: UILabel! //Label that displays the current status of the heater
+    @IBOutlet weak var heaterLabel: UILabel!      //Label that displays the current status of the heater
     @IBOutlet weak var currentTempLabel: UILabel! //Label that displays the value of the current temperature
     @ObservedObject var data = Temperature()
-    var lowTempNotificationTime: Date? //Stores last time notification for low temp was sent, so that it isn't repetitive
-    var highTempNotificationTime: Date? //Stores last time notification for low temp was sent, so that it isn't repetitive
+    var lowTempNotificationTime: Date?            //Stores last time notification for low temp was sent, so that it isn't repetitive
+    var highTempNotificationTime: Date?           //Stores last time notification for low temp was sent, so that it isn't repetitive
+    
     //Settings button that takes you to the settings screen
     @IBAction func buttonSettings(_ sender: Any){
         _ = SwiftUIView()
@@ -43,6 +44,7 @@ class ViewController: UIViewController {
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
         view.layer.insertSublayer(gradientLayer, at: 0)
 
+        //Pop up asking user to enable notifications
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) {
             (granted, error) in
@@ -50,18 +52,21 @@ class ViewController: UIViewController {
         
         //Database initialization
         var databaseHandle:DatabaseHandle
-        //Database adress
+        //Database address
         ref = Database.database(url:"https://segp-a1804-default-rtdb.asia-southeast1.firebasedatabase.app/").reference()
         
+        //Reading the current temperature value from the database by listening for any changes to the child node
         databaseHandle = (ref?.child("Thermocouple/temperature").observe(.childChanged, with: { snapshot in
             
             if let doubleValue = snapshot.value as? Double {
                 temp = doubleValue
                 self.currentTempLabel.text = ("\(temp)°C")
                 
+                //Fetches last lowerbound value from userdefaults
                 if let lowerTemp = UserDefaults.standard.object(forKey: "lowerTemp") as? Double {
                     lb = lowerTemp
                 }
+                //Fetches last upperbound value from userdefaults
                 if let upperTemp = UserDefaults.standard.object(forKey: "upperTemp") as? Double {
                     ub = upperTemp
                 }
@@ -70,6 +75,8 @@ class ViewController: UIViewController {
                 if temp > ub {
                     self.lowTempNotificationTime = Date().addingTimeInterval(-20)//Increasing the time for when the notification was last sent
                     self.currentTempLabel.textColor = UIColor(red: 0.92, green: 0.90, blue: 0.85, alpha: 1.00)
+                    
+                    //Changing color of background
                     gradientLayer.colors = [
                         UIColor(red: 1, green: 0.0, blue: 0.0, alpha: 1).cgColor,
                         UIColor(red: 1.00, green: 0.41, blue: 0.38, alpha: 1.00).cgColor
@@ -106,12 +113,16 @@ class ViewController: UIViewController {
                     self.highTempNotificationTime = Date().addingTimeInterval(-20) //Make notification ready to execute immedately next time
                     self.lowTempNotificationTime = Date().addingTimeInterval(-20)  //Make notification ready to execute immedately next time
                     self.currentTempLabel.textColor = UIColor(red: 0.92, green: 0.90, blue: 0.85, alpha: 1.00)
+                    
+                    //Changing color of background
                     gradientLayer.colors = [UIColor(red: 0.28, green: 0.52, blue: 0.28, alpha: 1.00).cgColor,UIColor(red: 0.47, green: 0.87,blue: 0.47, alpha: 1.00).cgColor]
                 }
                 
                 //if temp is below lower bound
                 else {
                     self.highTempNotificationTime = Date().addingTimeInterval(-20)
+                    
+                    //Changing color of background
                     self.currentTempLabel.textColor = UIColor(red: 0.92, green: 0.90, blue: 0.85, alpha: 1.00)
                     gradientLayer.colors = [UIColor(red: 0.31, green: 0.47, blue: 0.67, alpha: 1.00).cgColor,
                                             UIColor(red: 0.47, green: 0.68, blue: 0.83, alpha: 1.00).cgColor
@@ -146,7 +157,7 @@ class ViewController: UIViewController {
             }
             else {
                 print("Failed to read integer value from database")
-                self.currentTempLabel.text = ("DATABASE ERROR")
+                self.currentTempLabel.text = ("ERROR")
             }
         }))!
         

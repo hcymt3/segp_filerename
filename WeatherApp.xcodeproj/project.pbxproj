@@ -14,8 +14,6 @@
 		44AC4232292359FB00AEC994 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44AC4231292359FB00AEC994 /* Preview Assets.xcassets */; };
 		44C7957729ABA370009E8C8C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C7957629ABA370009E8C8C /* ViewController.swift */; };
 		44C7957929ABA38A009E8C8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44C7957829ABA389009E8C8C /* Main.storyboard */; };
-		44D175E129B38F3E00B46B2A /* WarningScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D175E029B38F3E00B46B2A /* WarningScreen.storyboard */; };
-		44D175E329B390DA00B46B2A /* WarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D175E229B390DA00B46B2A /* WarningViewController.swift */; };
 		44F165B5297E83F800EB49D3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F165B4297E83F800EB49D3 /* SettingsView.swift */; };
 		4F42F69129C8BBEC004FF9A8 /* Libraryam.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F42F69029C8BBEC004FF9A8 /* Libraryam.otf */; };
 		4F5DE03529CEE1BB00F92DA1 /* customnotification.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4F5DE03429CEE1BB00F92DA1 /* customnotification.wav */; };
@@ -34,8 +32,6 @@
 		44AC4231292359FB00AEC994 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		44C7957629ABA370009E8C8C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		44C7957829ABA389009E8C8C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		44D175E029B38F3E00B46B2A /* WarningScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WarningScreen.storyboard; sourceTree = "<group>"; };
-		44D175E229B390DA00B46B2A /* WarningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningViewController.swift; sourceTree = "<group>"; };
 		44F165B4297E83F800EB49D3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4F42F69029C8BBEC004FF9A8 /* Libraryam.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Libraryam.otf; sourceTree = "<group>"; };
 		4F5DE03429CEE1BB00F92DA1 /* customnotification.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = customnotification.wav; sourceTree = "<group>"; };
@@ -102,9 +98,7 @@
 				4F7E0C4029B6E56600919672 /* GoogleService-Info.plist */,
 				44C7957829ABA389009E8C8C /* Main.storyboard */,
 				44C7957629ABA370009E8C8C /* ViewController.swift */,
-				44D175E029B38F3E00B46B2A /* WarningScreen.storyboard */,
 				4F68F9B329B4D17800F5DE57 /* SceneDelegate.swift */,
-				44D175E229B390DA00B46B2A /* WarningViewController.swift */,
 				4F5DE03429CEE1BB00F92DA1 /* customnotification.wav */,
 				4F42F69029C8BBEC004FF9A8 /* Libraryam.otf */,
 			);
@@ -178,7 +172,6 @@
 			files = (
 				4F5DE03529CEE1BB00F92DA1 /* customnotification.wav in Resources */,
 				44C7957929ABA38A009E8C8C /* Main.storyboard in Resources */,
-				44D175E129B38F3E00B46B2A /* WarningScreen.storyboard in Resources */,
 				4F7E0C4129B6E56600919672 /* GoogleService-Info.plist in Resources */,
 				44AC4232292359FB00AEC994 /* Preview Assets.xcassets in Resources */,
 				44AC422F292359FB00AEC994 /* Assets.xcassets in Resources */,
@@ -197,7 +190,6 @@
 				4F68F9B429B4D17800F5DE57 /* SceneDelegate.swift in Sources */,
 				44AC422D292359F800AEC994 /* ContentView.swift in Sources */,
 				44F165B5297E83F800EB49D3 /* SettingsView.swift in Sources */,
-				44D175E329B390DA00B46B2A /* WarningViewController.swift in Sources */,
 				44AC422B292359F800AEC994 /* WeatherAppApp.swift in Sources */,
 				4499D442292FDAAE0046B859 /* Controller.swift in Sources */,
 			);
@@ -332,6 +324,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RCTemp;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -361,6 +354,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RCTemp;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
