@@ -9,7 +9,7 @@ iOS App (Writen in Swift)
 
 # ARDUINO 
 
-Download the IDE here:
+Download the IDE here: https://www.arduino.cc/en/software
 
 In order for this program to work, the following components are needed:
 
@@ -17,16 +17,17 @@ Arduino Uno Wifi Rev2
 K Type Thermocouple
 MAX6675 Amplifier
 PTC Heating Plate
+Relay
 I2C LCD screen
-
-For a detailed guide on how to assemble this, please refer to the following link: 
-^^ @ivan idk what to say , or no ned to say pERHAPS
+Breadboard
+Male to male jumper wires
+Male to female jumper wires
 
 After assembling the components together, load the code provided to the aruino.
 
 ## Changes to be made:
 
-- Match the pins in the code to the pins used in your hardware set up
+- Match the relay pin in the code to the pin used in your hardware set up
 - Change the WiFi details to match the username and password of the WiFi available on site
 - Match the link of the database to your own firebase data.
 
