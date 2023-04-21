@@ -4,8 +4,8 @@ This software contains the basic set up for remote montioring of temperature sen
 
 ## COMPONENTS
 
-Arduino Temperature Controller (Written in C++)
-iOS App (Writen in Swift)
+- Arduino Temperature Controller (Written in C++)
+- iOS App (Writen in Swift)
 
 # ARDUINO 
 
@@ -21,7 +21,7 @@ Relay,
 I2C LCD screen,
 Breadboard,
 Male to male jumper wires,
-Male to female jumper wires
+Male to female jumper wires.
 
 ## Wire Connection
 Connect voltage and ground pins to the respective pins. Use breadboard to extend the number of VCC and GND pins
@@ -43,7 +43,8 @@ After assembling the components together, load the code provided to the aruino.
 Download the IDE here: https://developer.apple.com/xcode/
 Note that only updated macOS systems can run Xcode
 
-Load the files provided in the IDE. There are two ways to run the program
+Load the files provided in the IDE. There are two ways to run the program:
+
 - use the built in simulator 
 - connect an iPhone (make sure developer mode is switched on) to the laptop/computer and use the iPhone as a simulator
 
