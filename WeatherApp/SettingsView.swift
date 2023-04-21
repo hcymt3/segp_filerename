@@ -1,6 +1,5 @@
 //
 //  SettingsView.swift
-//  WeatherApp
 //
 //  Created by Megan Teoh-John on 23/01/2023.
 //
