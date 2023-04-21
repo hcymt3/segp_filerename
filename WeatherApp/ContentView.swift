@@ -1,6 +1,5 @@
 //
 //  ContentView.swift
-//  WeatherApp
 //
 //  Created by Megan Teoh-John on 15/11/2022.
 //
@@ -10,7 +9,8 @@ import SwiftUI
 import UIKit
 
 // the class Temperature is an ObservableObejct that displays the main screen for the app in SwiftUI
-// an observable object would constantly refresh and retrieve values, if they are updated
+// an Observable Object would constantly refresh and retrieve values if they are updated in the settings page
+
 class Temperature: ObservableObject {
     
     let userDefaults = UserDefaults.standard
@@ -23,6 +23,7 @@ class Temperature: ObservableObject {
     @Published var t = temp
     
     // gets upperbound and lowerbound values
+    
     @Published var upperBound : Double {
         didSet {
             UserDefaults.standard.set(upperBound, forKey: "upperTemp")
