@@ -13,14 +13,14 @@ Download the IDE here: https://www.arduino.cc/en/software
 
 In order for this program to work, the following components are needed:
 
-Arduino Uno Wifi Rev2
-K Type Thermocouple
-MAX6675 Amplifier
-PTC Heating Plate
-Relay
-I2C LCD screen
-Breadboard
-Male to male jumper wires
+Arduino Uno Wifi Rev2,
+K Type Thermocouple,
+MAX6675 Amplifier,
+PTC Heating Plate,
+Relay,
+I2C LCD screen,
+Breadboard,
+Male to male jumper wires,
 Male to female jumper wires
 
 ##Wire Connection
@@ -45,7 +45,7 @@ Note that only updated macOS systems can run Xcode
 
 Load the files provided in the IDE. There are two ways to run the program
 - use the built in simulator 
-- connect an iPhone (make sure developer mode is switched on) to the laptop/computer and 
+- connect an iPhone (make sure developer mode is switched on) to the laptop/computer and use the iPhone as a simulator
 
 
 
