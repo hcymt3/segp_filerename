@@ -57,7 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				44C7957529ABA32F009E8C8C /* StoryboardFiles */,
-				44AC4229292359F800AEC994 /* WeatherApp */,
+				44AC4229292359F800AEC994 /* TempUI */,
 				44AC4228292359F800AEC994 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,7 +70,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		44AC4229292359F800AEC994 /* WeatherApp */ = {
+		44AC4229292359F800AEC994 /* TempUI */ = {
 			isa = PBXGroup;
 			children = (
 				4F68F9B229B4C87200F5DE57 /* Info.plist */,
@@ -81,7 +81,7 @@
 				44AC422E292359FB00AEC994 /* Assets.xcassets */,
 				44AC4230292359FB00AEC994 /* Preview Content */,
 			);
-			path = WeatherApp;
+			path = TempUI;
 			sourceTree = "<group>";
 		};
 		44AC4230292359FB00AEC994 /* Preview Content */ = {
