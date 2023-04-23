@@ -125,7 +125,7 @@
 				4FA3CF7E29AE2DC000C89123 /* FirebaseAnalytics */,
 				4FA3CF8029AE2DC000C89123 /* FirebaseDatabase */,
 			);
-			productName = WeatherApp;
+			productName = TempUI;
 			productReference = 44AC4227292359F800AEC994 /* TempController.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -319,11 +319,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WeatherApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TempUI/Preview Content\"";
 				DEVELOPMENT_TEAM = XNT9472SZQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherApp/Info.plist;
+				INFOPLIST_FILE = TempUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = RCTemp;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -349,11 +349,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WeatherApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TempUI/Preview Content\"";
 				DEVELOPMENT_TEAM = XNT9472SZQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherApp/Info.plist;
+				INFOPLIST_FILE = TempUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = RCTemp;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
