@@ -25,14 +25,14 @@ class Temperature: ObservableObject {
     // gets upperbound and lowerbound values
     @Published var upperBound : Double {
         didSet {
-            UserDefaults.standard.set(upperBound, forKey: "upperTemp")
-            ref.child("upperBound").setValue(upperBound)
+            UserDefaults.standard.set(upperBound, forKey: "upperTemp") //Store upperBound in userDefaults
+            ref.child("upperBound").setValue(upperBound)//Send upperBound to database
         }
     }
     @Published var lowerBound: Double {
         didSet {
-            UserDefaults.standard.set(lowerBound, forKey: "lowerTemp")
-            ref.child("lowerBound").setValue(lowerBound)
+            UserDefaults.standard.set(lowerBound, forKey: "lowerTemp") //Store lowerBound in userDefaults
+            ref.child("lowerBound").setValue(lowerBound)//Send lowerBound to database
         }
     }
     
@@ -102,4 +102,5 @@ struct storyboardview: UIViewControllerRepresentable{
         
     }
 }
+
 

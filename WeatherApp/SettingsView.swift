@@ -25,8 +25,8 @@ struct SwiftUIView: View {
     //showWarning promts user to input the correct conditions (upperbound must be > lowerbound)
     @State var showWarning = false
     
-    @State private var UB = ""
-    @State private var LB = ""
+    @State private var UB = "" //Store upperbound
+    @State private var LB = "" //Store lowerbound
     
     @FocusState private var focusedField: FF?
 
