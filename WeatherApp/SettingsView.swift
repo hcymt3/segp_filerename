@@ -1,6 +1,5 @@
 //
 //  SettingsView.swift
-//  WeatherApp
 //
 //  Created by Megan Teoh-John on 23/01/2023.
 //
@@ -8,7 +7,8 @@
 import SwiftUI
 
 //this file displays the settings menu for the app. Written in SwiftUI
-//one section of the code manipulates the upper bound, and the other, the lower bound
+//one section of the code manipulates the upper bound, and the other, the lower bound.
+//each section acts as a button, allowing the user to press it to edit the values
 
 
 struct SwiftUIView: View {
@@ -18,7 +18,6 @@ struct SwiftUIView: View {
     }
     
     //variables to trigger the editing functions
-    
     @State var editUB = false
     @State var editLB = false
     
@@ -42,7 +41,7 @@ struct SwiftUIView: View {
             VStack{
                 Spacer()
 
-                //heading
+                //heading of screen
                 HStack{
                          
                     Text("Settings")
@@ -71,7 +70,6 @@ struct SwiftUIView: View {
                 }
                                         
                 //UPPER BOUND SETTINGS
-                //if no edits are being made                      
                 
                 if !editUB{ 
                     
@@ -79,7 +77,7 @@ struct SwiftUIView: View {
                         editUB = true
                         
                     }) {
-                        // content of the button
+                        // content of the button: shows current upper bound value
                         HStack{
                             Text("Upper Bound")
                                 .foregroundColor(Color.black)
@@ -130,7 +128,7 @@ struct SwiftUIView: View {
                         
                         Button("Done") {
                             
-                            //if settings inputted by the user does not satisfy the requirements
+                            //if value inputted by the user satisfies requirements (upperbound is greater than lowerbound), save the settings
 
                             if ( Double(UB) ?? data.upperBound > data.lowerBound)
                             {
@@ -142,6 +140,7 @@ struct SwiftUIView: View {
                             }
                             else
                             {
+                                //else, show the warning message
                                 showWarning = true
                             }
 
@@ -158,7 +157,7 @@ struct SwiftUIView: View {
                 
              
                 //LOWER BOUND SETTINGS
-                //if no edits are being made
+             
                 
                 if !editLB{ 
                     
@@ -167,7 +166,7 @@ struct SwiftUIView: View {
                         editLB = true
                         
                     }) {
-                        // content of the button
+                        // content of the button: displays current lower bound value
                         HStack{
                             Text("Lower Bound")
                                 .foregroundColor(Color.black)
@@ -193,7 +192,7 @@ struct SwiftUIView: View {
                 }
                 
                     
-                //edit screen, to be displayed when user taps on lowerbound
+                //edit screen, to be displayed when user taps on lower bound
                 
                 if editLB {
                     
@@ -220,7 +219,7 @@ struct SwiftUIView: View {
                         
                         Button("Done") {
                             
-                            //if settings inputted by the user satisfies requirements, save the settings
+                            //if value inputted by the user satisfies requirements (lowerbound is less than upperbound), save the settings
 
                             if ( Double(LB) ?? data.lowerBound < data.upperBound)
                             {
